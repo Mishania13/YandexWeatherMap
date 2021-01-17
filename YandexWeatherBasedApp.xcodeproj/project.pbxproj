@@ -7,23 +7,41 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D64D951625B468C100ABCD4D /* YandexWeatherData.swift in Sources */ = {isa = PBXBuildFile; fileRef = D64D951525B468C100ABCD4D /* YandexWeatherData.swift */; };
+		D64D951A25B4979D00ABCD4D /* WeatherListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D64D951925B4979D00ABCD4D /* WeatherListCell.swift */; };
+		D64D951E25B499EE00ABCD4D /* WeatherListConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D64D951D25B499EE00ABCD4D /* WeatherListConfigurator.swift */; };
+		D64D952325B49AC000ABCD4D /* WeatherListRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D64D952225B49AC000ABCD4D /* WeatherListRouter.swift */; };
+		D64D952625B49B6400ABCD4D /* WeatherListInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = D64D952525B49B6400ABCD4D /* WeatherListInteractor.swift */; };
+		D64D952D25B49E4200ABCD4D /* WeatherListPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D64D952C25B49E4200ABCD4D /* WeatherListPresenter.swift */; };
+		D64D953625B4C0D700ABCD4D /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D64D953525B4C0D700ABCD4D /* NetworkManager.swift */; };
+		D64D953925B4C3AB00ABCD4D /* Cities.swift in Sources */ = {isa = PBXBuildFile; fileRef = D64D953825B4C3AB00ABCD4D /* Cities.swift */; };
 		D64EBAF425B348DB001DF553 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D64EBAF325B348DB001DF553 /* AppDelegate.swift */; };
 		D64EBAF625B348DB001DF553 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D64EBAF525B348DB001DF553 /* SceneDelegate.swift */; };
-		D64EBAF825B348DB001DF553 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D64EBAF725B348DB001DF553 /* ViewController.swift */; };
+		D64EBAF825B348DB001DF553 /* WeatherListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D64EBAF725B348DB001DF553 /* WeatherListViewController.swift */; };
 		D64EBAFB25B348DB001DF553 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D64EBAF925B348DB001DF553 /* Main.storyboard */; };
 		D64EBAFD25B348E2001DF553 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D64EBAFC25B348E2001DF553 /* Assets.xcassets */; };
 		D64EBB0025B348E2001DF553 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D64EBAFE25B348E2001DF553 /* LaunchScreen.storyboard */; };
+		D64EBB0A25B367B7001DF553 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D64EBB0925B367B7001DF553 /* LocationManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		D64D951525B468C100ABCD4D /* YandexWeatherData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = YandexWeatherData.swift; path = YandexWeatherBasedApp/Models/YandexWeatherData.swift; sourceTree = SOURCE_ROOT; };
+		D64D951925B4979D00ABCD4D /* WeatherListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherListCell.swift; sourceTree = "<group>"; };
+		D64D951D25B499EE00ABCD4D /* WeatherListConfigurator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherListConfigurator.swift; sourceTree = "<group>"; };
+		D64D952225B49AC000ABCD4D /* WeatherListRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherListRouter.swift; sourceTree = "<group>"; };
+		D64D952525B49B6400ABCD4D /* WeatherListInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherListInteractor.swift; sourceTree = "<group>"; };
+		D64D952C25B49E4200ABCD4D /* WeatherListPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherListPresenter.swift; sourceTree = "<group>"; };
+		D64D953525B4C0D700ABCD4D /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = SOURCE_ROOT; };
+		D64D953825B4C3AB00ABCD4D /* Cities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cities.swift; sourceTree = "<group>"; };
 		D64EBAF025B348DB001DF553 /* YandexWeatherBasedApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = YandexWeatherBasedApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D64EBAF325B348DB001DF553 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D64EBAF525B348DB001DF553 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		D64EBAF725B348DB001DF553 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		D64EBAF725B348DB001DF553 /* WeatherListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherListViewController.swift; sourceTree = "<group>"; };
 		D64EBAFA25B348DB001DF553 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		D64EBAFC25B348E2001DF553 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D64EBAFF25B348E2001DF553 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		D64EBB0125B348E2001DF553 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D64EBB0925B367B7001DF553 /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -37,6 +55,45 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		D64D952025B49A4100ABCD4D /* WeatherList */ = {
+			isa = PBXGroup;
+			children = (
+				D64EBAF725B348DB001DF553 /* WeatherListViewController.swift */,
+				D64D952C25B49E4200ABCD4D /* WeatherListPresenter.swift */,
+				D64D952525B49B6400ABCD4D /* WeatherListInteractor.swift */,
+				D64D952225B49AC000ABCD4D /* WeatherListRouter.swift */,
+				D64D951D25B499EE00ABCD4D /* WeatherListConfigurator.swift */,
+				D64D952825B49BF700ABCD4D /* WeatherListCell */,
+			);
+			path = WeatherList;
+			sourceTree = "<group>";
+		};
+		D64D952825B49BF700ABCD4D /* WeatherListCell */ = {
+			isa = PBXGroup;
+			children = (
+				D64D951925B4979D00ABCD4D /* WeatherListCell.swift */,
+			);
+			path = WeatherListCell;
+			sourceTree = "<group>";
+		};
+		D64D953225B4C03D00ABCD4D /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				D64D951525B468C100ABCD4D /* YandexWeatherData.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		D64D953325B4C05200ABCD4D /* Managers */ = {
+			isa = PBXGroup;
+			children = (
+				D64D953525B4C0D700ABCD4D /* NetworkManager.swift */,
+				D64EBB0925B367B7001DF553 /* LocationManager.swift */,
+				D64D953825B4C3AB00ABCD4D /* Cities.swift */,
+			);
+			path = Managers;
+			sourceTree = "<group>";
+		};
 		D64EBAE725B348DB001DF553 = {
 			isa = PBXGroup;
 			children = (
@@ -56,9 +113,11 @@
 		D64EBAF225B348DB001DF553 /* YandexWeatherBasedApp */ = {
 			isa = PBXGroup;
 			children = (
+				D64D952025B49A4100ABCD4D /* WeatherList */,
+				D64D953225B4C03D00ABCD4D /* Models */,
 				D64EBAF325B348DB001DF553 /* AppDelegate.swift */,
 				D64EBAF525B348DB001DF553 /* SceneDelegate.swift */,
-				D64EBAF725B348DB001DF553 /* ViewController.swift */,
+				D64D953325B4C05200ABCD4D /* Managers */,
 				D64EBAF925B348DB001DF553 /* Main.storyboard */,
 				D64EBAFC25B348E2001DF553 /* Assets.xcassets */,
 				D64EBAFE25B348E2001DF553 /* LaunchScreen.storyboard */,
@@ -137,9 +196,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D64EBAF825B348DB001DF553 /* ViewController.swift in Sources */,
+				D64D953925B4C3AB00ABCD4D /* Cities.swift in Sources */,
+				D64EBB0A25B367B7001DF553 /* LocationManager.swift in Sources */,
+				D64EBAF825B348DB001DF553 /* WeatherListViewController.swift in Sources */,
+				D64D951625B468C100ABCD4D /* YandexWeatherData.swift in Sources */,
+				D64D952D25B49E4200ABCD4D /* WeatherListPresenter.swift in Sources */,
+				D64D953625B4C0D700ABCD4D /* NetworkManager.swift in Sources */,
 				D64EBAF425B348DB001DF553 /* AppDelegate.swift in Sources */,
+				D64D952625B49B6400ABCD4D /* WeatherListInteractor.swift in Sources */,
 				D64EBAF625B348DB001DF553 /* SceneDelegate.swift in Sources */,
+				D64D951A25B4979D00ABCD4D /* WeatherListCell.swift in Sources */,
+				D64D951E25B499EE00ABCD4D /* WeatherListConfigurator.swift in Sources */,
+				D64D952325B49AC000ABCD4D /* WeatherListRouter.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -289,6 +357,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = TY8AJ3X7FD;
 				INFOPLIST_FILE = YandexWeatherBasedApp/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -308,6 +377,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = TY8AJ3X7FD;
 				INFOPLIST_FILE = YandexWeatherBasedApp/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
