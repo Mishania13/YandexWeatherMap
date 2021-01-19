@@ -9,7 +9,18 @@ import UIKit
 
 class WeatherListCell: UITableViewCell {
     
-    @IBOutlet private var cityNameLable: UILabel!
-    @IBOutlet private var weatherIcon: UIImage!
-    @IBOutlet private var temperatureLable: UILabel!
+    @IBOutlet private var cityNameLabel: UILabel!
+    @IBOutlet private var weatherIcon: UIImageView!
+    @IBOutlet private var temperatureLabel: UILabel!
+    
+    var viewModel: WeatherListCellViewModelProtocol! {
+        didSet {
+            print("KSNAKJNSJJSNJKNSJKANSANSLKN")
+            cityNameLabel.text = viewModel.cityName
+            temperatureLabel.text = viewModel.temp
+//            if let data = viewModel.imageData {
+//                weatherIcon.image = UIImage(data: data)
+//            }
+        }
+    }
 }

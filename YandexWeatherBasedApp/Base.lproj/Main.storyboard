@@ -17,7 +17,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="m1J-iP-DyL">
+                            <searchBar contentMode="redraw" searchBarStyle="minimal" placeholder="Населенного пункта" translatesAutoresizingMaskIntoConstraints="NO" id="m1J-iP-DyL">
                                 <rect key="frame" x="0.0" y="20" width="320" height="35"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="35" id="Ii3-he-vpX"/>
@@ -25,10 +25,10 @@
                                 <textInputTraits key="textInputTraits"/>
                             </searchBar>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="gQM-fG-EpZ">
-                                <rect key="frame" x="0.0" y="55" width="320" height="513"/>
+                                <rect key="frame" x="0.0" y="60" width="320" height="508"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="mainViewCell" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="mainViewCell" rowHeight="50" id="Toc-PC-ahP">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="MainViewCellIdentifire" rowHeight="50" id="Toc-PC-ahP" customClass="WeatherListCell" customModule="YandexWeatherBasedApp" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="320" height="50"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Toc-PC-ahP" id="JmK-oB-DDk">
@@ -42,31 +42,49 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="QBV-Jf-VxP">
-                                                    <rect key="frame" x="206" y="12" width="98" height="26.5"/>
+                                                    <rect key="frame" x="242" y="12" width="62" height="26.5"/>
                                                     <subviews>
-                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="cloud.sun" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="LQF-TF-NXw">
-                                                            <rect key="frame" x="0.0" y="-1.5" width="26" height="25.5"/>
-                                                            <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                        </imageView>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="+10˚C" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uRN-Vh-LDV">
-                                                            <rect key="frame" x="36" y="0.0" width="62" height="26.5"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="62" height="26.5"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="22"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                     </subviews>
                                                 </stackView>
+                                                <wkWebView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Rlm-vd-HM7">
+                                                    <rect key="frame" x="200" y="6.5" width="37" height="37"/>
+                                                    <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" secondItem="Rlm-vd-HM7" secondAttribute="height" multiplier="1:1" id="zXM-5d-cCe"/>
+                                                    </constraints>
+                                                    <wkWebViewConfiguration key="configuration">
+                                                        <audiovisualMediaTypes key="mediaTypesRequiringUserActionForPlayback" none="YES"/>
+                                                        <wkPreferences key="preferences"/>
+                                                    </wkWebViewConfiguration>
+                                                </wkWebView>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstAttribute="trailingMargin" secondItem="QBV-Jf-VxP" secondAttribute="trailing" id="1nw-9d-qGb"/>
+                                                <constraint firstItem="uRN-Vh-LDV" firstAttribute="leading" secondItem="Rlm-vd-HM7" secondAttribute="trailing" constant="5" id="6jD-6V-yCF"/>
                                                 <constraint firstItem="QBV-Jf-VxP" firstAttribute="centerY" secondItem="JmK-oB-DDk" secondAttribute="centerY" id="MfS-yg-TxT"/>
-                                                <constraint firstItem="QBV-Jf-VxP" firstAttribute="leading" relation="lessThanOrEqual" secondItem="oBB-Xg-Ihz" secondAttribute="trailing" constant="100" id="YhC-aL-CeX"/>
                                                 <constraint firstItem="oBB-Xg-Ihz" firstAttribute="leading" secondItem="JmK-oB-DDk" secondAttribute="leadingMargin" id="aNq-tX-zxe"/>
                                                 <constraint firstItem="oBB-Xg-Ihz" firstAttribute="centerY" secondItem="JmK-oB-DDk" secondAttribute="centerY" id="cUn-BR-zDP"/>
+                                                <constraint firstItem="Rlm-vd-HM7" firstAttribute="leading" secondItem="oBB-Xg-Ihz" secondAttribute="trailing" constant="8" symbolic="YES" id="fdt-Pz-MmU"/>
+                                                <constraint firstItem="Rlm-vd-HM7" firstAttribute="centerY" secondItem="JmK-oB-DDk" secondAttribute="centerY" id="txf-tv-qgl"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="cityNameLabel" destination="oBB-Xg-Ihz" id="ZdN-7b-odV"/>
+                                            <outlet property="svgWebViewImage" destination="Rlm-vd-HM7" id="REZ-Ym-h12"/>
+                                            <outlet property="temperatureLabel" destination="uRN-Vh-LDV" id="Jn9-2C-9d1"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="BYZ-38-t0r" id="v5T-HH-cil"/>
+                                    <outlet property="delegate" destination="BYZ-38-t0r" id="CHT-hG-dHl"/>
+                                </connections>
                             </tableView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
@@ -76,18 +94,20 @@
                             <constraint firstItem="gQM-fG-EpZ" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="3s4-xW-Y11"/>
                             <constraint firstItem="m1J-iP-DyL" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="20" id="9uN-Zr-pOM"/>
                             <constraint firstItem="gQM-fG-EpZ" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="AdT-gE-U09"/>
-                            <constraint firstItem="gQM-fG-EpZ" firstAttribute="top" secondItem="m1J-iP-DyL" secondAttribute="bottom" id="L9Y-45-2ka"/>
+                            <constraint firstItem="gQM-fG-EpZ" firstAttribute="top" secondItem="m1J-iP-DyL" secondAttribute="bottom" constant="5" id="L9Y-45-2ka"/>
                             <constraint firstAttribute="bottom" secondItem="gQM-fG-EpZ" secondAttribute="bottom" id="OAA-fe-wS0"/>
                             <constraint firstItem="m1J-iP-DyL" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="oTM-JO-5bR"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="searchBar" destination="m1J-iP-DyL" id="CB1-4O-2ad"/>
+                        <outlet property="table" destination="gQM-fG-EpZ" id="N69-U4-3zm"/>
                         <segue destination="Uun-1h-Z4d" kind="show" identifier="goToDetails" id="BbQ-6X-mYd"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="34.782608695652179" y="93.75"/>
+            <point key="canvasLocation" x="33.75" y="92.957746478873247"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="j6l-wk-LNa">
@@ -221,7 +241,6 @@
     </scenes>
     <resources>
         <image name="cloud.drizzle" catalog="system" width="128" height="125"/>
-        <image name="cloud.sun" catalog="system" width="128" height="93"/>
         <image name="location" catalog="system" width="128" height="121"/>
         <image name="wind" catalog="system" width="128" height="101"/>
         <systemColor name="systemBackgroundColor">

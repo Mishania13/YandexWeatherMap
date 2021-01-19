@@ -7,35 +7,48 @@
 
 import Foundation
 
-struct NetworkManager {
+class NetworkManager {
     
-    private var lat = 0.0
-    private var lon = 0.0
-    private lazy var urlString = "https://api.weather.yandex.ru/v2/forecast?lat=\(lat)&lon=\(lon)&extra=true&lang=ru_RU"
+    static let shared = NetworkManager()
+    private let urlString = "https://api.weather.yandex.ru/v2/forecast?"
+    private let imageUrlString = "https://yastatic.net/weather/i/icons/blueye/color/svg/"
+    
     private let apiKey = "32615584-6274-4047-9fc4-18c66b1d5040"
     private let apiField = "X-Yandex-API-Key"
+    private let latitudeField = "&lat="
+    private let longitudeField = "&lon="
     
-    mutating func fetchData(complitionHandeler: @escaping(YandexWeatherData)->Void)  {
+    private let locationManager = LocationManager()
+    
+    func fetchData(forCity city: String, complitionHandeler: @escaping(YandexWeatherData)->Void)  {
         
-        let url = URL(string: urlString)
-        if let unwrappedURL = url {
-            var request = URLRequest(url: unwrappedURL)
-            request.addValue(apiKey, forHTTPHeaderField: apiField)
+        var urlString = self.urlString
+        
+        locationManager.getCoordinate(forCity: city) { (coordinate) in
+            urlString += self.latitudeField + coordinate.latitude
+            urlString += self.longitudeField + coordinate.longitude
+            
+            guard let url = URL(string: urlString) else {return}
+            var request = URLRequest(url: url)
+            request.addValue(self.apiKey, forHTTPHeaderField: self.apiField)
+            
+            
             let dataTask = URLSession.shared.dataTask(with: request) { (data, response, error) in
                 if let error = error {
-                    print(error.localizedDescription)
+                    print(error)
                 }
+                
                 if let data = data {
-                    if let weatherData = parseJSON(withData: data) {
+                    guard let weatherData = self.parseJSON(withData: data) else {return}
+                    DispatchQueue.main.async {
                     complitionHandeler(weatherData)
                     }
                 }
             }
             dataTask.resume()
         }
+        
     }
-    
-    mutating func getCoordinates (coordinates:[String] -> ())
     
     private func parseJSON(withData data: Data) -> YandexWeatherData? {
         
@@ -45,7 +58,18 @@ struct NetworkManager {
             return currentWeatherData
             
         } catch let error as NSError {
-            print(error.localizedDescription)
+            print(error)
+        }
+        return nil
+    }
+    
+    func loadImageData(imageName: String) -> Data? {
+        
+        let urlString = self.imageUrlString + imageName + ".svg"
+        
+        guard let url = URL(string: urlString) else {return nil}
+        if let data = try? Data(contentsOf: url) {
+            return data
         }
         return nil
     }
