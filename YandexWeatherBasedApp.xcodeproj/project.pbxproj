@@ -20,9 +20,13 @@
 		D64EBB0025B348E2001DF553 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D64EBAFE25B348E2001DF553 /* LaunchScreen.storyboard */; };
 		D64EBB0A25B367B7001DF553 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D64EBB0925B367B7001DF553 /* LocationManager.swift */; };
 		D6A49D0325B6186C00CE6E4D /* WeatherListCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6A49D0225B6186C00CE6E4D /* WeatherListCellViewModel.swift */; };
+		FC25723FD71E530979BEB3A5 /* Pods_YandexWeatherBasedApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 17BE76093F8E716000C92F7B /* Pods_YandexWeatherBasedApp.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		17BE76093F8E716000C92F7B /* Pods_YandexWeatherBasedApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_YandexWeatherBasedApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		6EB21C53D90A14E3DFB95282 /* Pods-YandexWeatherBasedApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-YandexWeatherBasedApp.release.xcconfig"; path = "Target Support Files/Pods-YandexWeatherBasedApp/Pods-YandexWeatherBasedApp.release.xcconfig"; sourceTree = "<group>"; };
+		AF80644A2AE41C738861263C /* Pods-YandexWeatherBasedApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-YandexWeatherBasedApp.debug.xcconfig"; path = "Target Support Files/Pods-YandexWeatherBasedApp/Pods-YandexWeatherBasedApp.debug.xcconfig"; sourceTree = "<group>"; };
 		D64D951525B468C100ABCD4D /* YandexWeatherData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = YandexWeatherData.swift; path = YandexWeatherBasedApp/Models/YandexWeatherData.swift; sourceTree = SOURCE_ROOT; };
 		D64D951925B4979D00ABCD4D /* WeatherListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherListCell.swift; sourceTree = "<group>"; };
 		D64D953525B4C0D700ABCD4D /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = SOURCE_ROOT; };
@@ -45,12 +49,31 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FC25723FD71E530979BEB3A5 /* Pods_YandexWeatherBasedApp.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		84353492540F01308286CB85 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				17BE76093F8E716000C92F7B /* Pods_YandexWeatherBasedApp.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		CF8863C27B29FED23DA263B5 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				AF80644A2AE41C738861263C /* Pods-YandexWeatherBasedApp.debug.xcconfig */,
+				6EB21C53D90A14E3DFB95282 /* Pods-YandexWeatherBasedApp.release.xcconfig */,
+			);
+			name = Pods;
+			path = Pods;
+			sourceTree = "<group>";
+		};
 		D64D952025B49A4100ABCD4D /* WeatherList */ = {
 			isa = PBXGroup;
 			children = (
@@ -93,6 +116,8 @@
 			children = (
 				D64EBAF225B348DB001DF553 /* YandexWeatherBasedApp */,
 				D64EBAF125B348DB001DF553 /* Products */,
+				CF8863C27B29FED23DA263B5 /* Pods */,
+				84353492540F01308286CB85 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -127,9 +152,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = D64EBB0425B348E2001DF553 /* Build configuration list for PBXNativeTarget "YandexWeatherBasedApp" */;
 			buildPhases = (
+				09AF4617D5BF087ECAA0F7C4 /* [CP] Check Pods Manifest.lock */,
 				D64EBAEC25B348DB001DF553 /* Sources */,
 				D64EBAED25B348DB001DF553 /* Frameworks */,
 				D64EBAEE25B348DB001DF553 /* Resources */,
+				AD0CDA16DC1D509A69F2573C /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -184,6 +211,48 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		09AF4617D5BF087ECAA0F7C4 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-YandexWeatherBasedApp-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		AD0CDA16DC1D509A69F2573C /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-YandexWeatherBasedApp/Pods-YandexWeatherBasedApp-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-YandexWeatherBasedApp/Pods-YandexWeatherBasedApp-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-YandexWeatherBasedApp/Pods-YandexWeatherBasedApp-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		D64EBAEC25B348DB001DF553 /* Sources */ = {
@@ -343,6 +412,7 @@
 		};
 		D64EBB0525B348E2001DF553 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = AF80644A2AE41C738861263C /* Pods-YandexWeatherBasedApp.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -363,6 +433,7 @@
 		};
 		D64EBB0625B348E2001DF553 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 6EB21C53D90A14E3DFB95282 /* Pods-YandexWeatherBasedApp.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
