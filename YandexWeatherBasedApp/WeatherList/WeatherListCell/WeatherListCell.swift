@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SVGKit
 
 class WeatherListCell: UITableViewCell {
     
@@ -15,12 +16,22 @@ class WeatherListCell: UITableViewCell {
     
     var viewModel: WeatherListCellViewModelProtocol! {
         didSet {
-            print("KSNAKJNSJJSNJKNSJKANSANSLKN")
+
             cityNameLabel.text = viewModel.cityName
             temperatureLabel.text = viewModel.temp
-//            if let data = viewModel.imageData {
-//                weatherIcon.image = UIImage(data: data)
-//            }
+            addSVGImage(iconWidth: weatherIcon.bounds.width,
+                        iconHeight: weatherIcon.bounds.height,
+                        weatherIconSVG: viewModel.weatherIcon)
+            print("SSSSS")
+        }
+    }
+    
+    func addSVGImage(iconWidth width: CGFloat, iconHeight height: CGFloat, weatherIconSVG: SVGKImage?) {
+        
+        if let svgImage = weatherIconSVG {
+            svgImage.size = CGSize(width: width, height: height)
+            let svgImageView = SVGKFastImageView(svgkImage: svgImage)
+            weatherIcon.addSubview(svgImageView!)
         }
     }
 }

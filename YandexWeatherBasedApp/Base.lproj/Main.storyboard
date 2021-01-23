@@ -52,38 +52,33 @@
                                                         </label>
                                                     </subviews>
                                                 </stackView>
-                                                <wkWebView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Rlm-vd-HM7">
-                                                    <rect key="frame" x="200" y="6.5" width="37" height="37"/>
-                                                    <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="tyc-Yh-n3Z">
+                                                    <rect key="frame" x="197" y="5" width="40" height="40"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="width" secondItem="Rlm-vd-HM7" secondAttribute="height" multiplier="1:1" id="zXM-5d-cCe"/>
+                                                        <constraint firstAttribute="width" constant="40" id="8Xg-IB-qtY"/>
+                                                        <constraint firstAttribute="height" constant="40" id="McL-uj-WIX"/>
                                                     </constraints>
-                                                    <wkWebViewConfiguration key="configuration">
-                                                        <audiovisualMediaTypes key="mediaTypesRequiringUserActionForPlayback" none="YES"/>
-                                                        <wkPreferences key="preferences"/>
-                                                    </wkWebViewConfiguration>
-                                                </wkWebView>
+                                                </imageView>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstAttribute="trailingMargin" secondItem="QBV-Jf-VxP" secondAttribute="trailing" id="1nw-9d-qGb"/>
-                                                <constraint firstItem="uRN-Vh-LDV" firstAttribute="leading" secondItem="Rlm-vd-HM7" secondAttribute="trailing" constant="5" id="6jD-6V-yCF"/>
+                                                <constraint firstItem="tyc-Yh-n3Z" firstAttribute="leading" secondItem="oBB-Xg-Ihz" secondAttribute="trailing" constant="5" id="3zR-wa-9ji"/>
+                                                <constraint firstItem="uRN-Vh-LDV" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="tyc-Yh-n3Z" secondAttribute="trailing" constant="5" id="7z8-I5-s0k"/>
                                                 <constraint firstItem="QBV-Jf-VxP" firstAttribute="centerY" secondItem="JmK-oB-DDk" secondAttribute="centerY" id="MfS-yg-TxT"/>
                                                 <constraint firstItem="oBB-Xg-Ihz" firstAttribute="leading" secondItem="JmK-oB-DDk" secondAttribute="leadingMargin" id="aNq-tX-zxe"/>
                                                 <constraint firstItem="oBB-Xg-Ihz" firstAttribute="centerY" secondItem="JmK-oB-DDk" secondAttribute="centerY" id="cUn-BR-zDP"/>
-                                                <constraint firstItem="Rlm-vd-HM7" firstAttribute="leading" secondItem="oBB-Xg-Ihz" secondAttribute="trailing" constant="8" symbolic="YES" id="fdt-Pz-MmU"/>
-                                                <constraint firstItem="Rlm-vd-HM7" firstAttribute="centerY" secondItem="JmK-oB-DDk" secondAttribute="centerY" id="txf-tv-qgl"/>
+                                                <constraint firstItem="tyc-Yh-n3Z" firstAttribute="centerY" secondItem="JmK-oB-DDk" secondAttribute="centerY" id="krx-Ya-8a3"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="cityNameLabel" destination="oBB-Xg-Ihz" id="ZdN-7b-odV"/>
-                                            <outlet property="svgWebViewImage" destination="Rlm-vd-HM7" id="REZ-Ym-h12"/>
                                             <outlet property="temperatureLabel" destination="uRN-Vh-LDV" id="Jn9-2C-9d1"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
                                 <connections>
-                                    <outlet property="dataSource" destination="BYZ-38-t0r" id="v5T-HH-cil"/>
-                                    <outlet property="delegate" destination="BYZ-38-t0r" id="CHT-hG-dHl"/>
+                                    <outlet property="dataSource" destination="BYZ-38-t0r" id="lmI-6Y-gZt"/>
+                                    <outlet property="delegate" destination="BYZ-38-t0r" id="frd-sl-f99"/>
                                 </connections>
                             </tableView>
                         </subviews>
@@ -101,7 +96,7 @@
                     </view>
                     <connections>
                         <outlet property="searchBar" destination="m1J-iP-DyL" id="CB1-4O-2ad"/>
-                        <outlet property="table" destination="gQM-fG-EpZ" id="N69-U4-3zm"/>
+                        <outlet property="tableView" destination="gQM-fG-EpZ" id="N69-U4-3zm"/>
                         <segue destination="Uun-1h-Z4d" kind="show" identifier="goToDetails" id="BbQ-6X-mYd"/>
                     </connections>
                 </viewController>
