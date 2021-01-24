@@ -14,7 +14,7 @@ protocol WeatherListCellViewModelProtocol {
     var temp: String {get}
     var weatherIcon: SVGKImage? {get}
     
-    init(weatherInfo: YandexWeatherData)
+    init(weatherInfo: YandexWeatherData?)
 }
 
 class WeatherListCellViewModel: WeatherListCellViewModelProtocol {
@@ -23,11 +23,11 @@ class WeatherListCellViewModel: WeatherListCellViewModelProtocol {
     var temp: String
     var weatherIcon: SVGKImage?
     
-    required init(weatherInfo: YandexWeatherData) {
+    required init(weatherInfo: YandexWeatherData?) {
         
-        self.cityName = weatherInfo.geoObject.locality.name ?? "Неопознанный город"
-        self.temp = String(weatherInfo.fact.temp ?? 25) + "˚C"
-        self.weatherIcon = NetworkManager.shared.loadSVGImage(imageName: "weatherInfo.fact.icon")
+        self.cityName = weatherInfo?.geoObject.locality.name ?? "Неопознанный город"
+        self.temp = String(weatherInfo?.fact.temp ?? 00) + "˚C"
+        self.weatherIcon = NetworkManager.shared.loadSVGImage(imageName: "\(weatherInfo?.fact.icon ?? "ovc")")
     }
 }
 

@@ -19,10 +19,12 @@ class WeatherListCell: UITableViewCell {
 
             cityNameLabel.text = viewModel.cityName
             temperatureLabel.text = viewModel.temp
+            
+            
             addSVGImage(iconWidth: weatherIcon.bounds.width,
                         iconHeight: weatherIcon.bounds.height,
                         weatherIconSVG: viewModel.weatherIcon)
-            print("SSSSS")
+                       
         }
     }
     

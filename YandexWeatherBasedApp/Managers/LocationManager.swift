@@ -20,4 +20,6 @@ struct LocationManager {
             comlitionHandler(locationCoordinate)
         }
     }
+    
+    
 }
