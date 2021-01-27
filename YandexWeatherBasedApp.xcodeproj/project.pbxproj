@@ -3,10 +3,12 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D6352EEF25BDE3DC00CE0674 /* DetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6352EEE25BDE3DC00CE0674 /* DetailsViewController.swift */; };
+		D6352EFA25BF2A0C00CE0674 /* DetailsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6352EF925BF2A0C00CE0674 /* DetailsViewModel.swift */; };
 		D64D951625B468C100ABCD4D /* YandexWeatherData.swift in Sources */ = {isa = PBXBuildFile; fileRef = D64D951525B468C100ABCD4D /* YandexWeatherData.swift */; };
 		D64D951A25B4979D00ABCD4D /* WeatherListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D64D951925B4979D00ABCD4D /* WeatherListCell.swift */; };
 		D64D953625B4C0D700ABCD4D /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D64D953525B4C0D700ABCD4D /* NetworkManager.swift */; };
@@ -19,7 +21,10 @@
 		D64EBAFD25B348E2001DF553 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D64EBAFC25B348E2001DF553 /* Assets.xcassets */; };
 		D64EBB0025B348E2001DF553 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D64EBAFE25B348E2001DF553 /* LaunchScreen.storyboard */; };
 		D64EBB0A25B367B7001DF553 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D64EBB0925B367B7001DF553 /* LocationManager.swift */; };
+		D66D253225C1EC42001FAC13 /* DetailsCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D66D253025C1EC41001FAC13 /* DetailsCollectionViewCell.swift */; };
+		D66D253A25C1FA4E001FAC13 /* DetailTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D66D253925C1FA4E001FAC13 /* DetailTableViewCell.swift */; };
 		D6A49D0325B6186C00CE6E4D /* WeatherListCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6A49D0225B6186C00CE6E4D /* WeatherListCellViewModel.swift */; };
+		D6B7F69725BC7A7F000504D3 /* WeatherListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6B7F69625BC7A7F000504D3 /* WeatherListViewModel.swift */; };
 		FC25723FD71E530979BEB3A5 /* Pods_YandexWeatherBasedApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 17BE76093F8E716000C92F7B /* Pods_YandexWeatherBasedApp.framework */; };
 /* End PBXBuildFile section */
 
@@ -27,6 +32,8 @@
 		17BE76093F8E716000C92F7B /* Pods_YandexWeatherBasedApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_YandexWeatherBasedApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6EB21C53D90A14E3DFB95282 /* Pods-YandexWeatherBasedApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-YandexWeatherBasedApp.release.xcconfig"; path = "Target Support Files/Pods-YandexWeatherBasedApp/Pods-YandexWeatherBasedApp.release.xcconfig"; sourceTree = "<group>"; };
 		AF80644A2AE41C738861263C /* Pods-YandexWeatherBasedApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-YandexWeatherBasedApp.debug.xcconfig"; path = "Target Support Files/Pods-YandexWeatherBasedApp/Pods-YandexWeatherBasedApp.debug.xcconfig"; sourceTree = "<group>"; };
+		D6352EEE25BDE3DC00CE0674 /* DetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsViewController.swift; sourceTree = "<group>"; };
+		D6352EF925BF2A0C00CE0674 /* DetailsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsViewModel.swift; sourceTree = "<group>"; };
 		D64D951525B468C100ABCD4D /* YandexWeatherData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = YandexWeatherData.swift; path = YandexWeatherBasedApp/Models/YandexWeatherData.swift; sourceTree = SOURCE_ROOT; };
 		D64D951925B4979D00ABCD4D /* WeatherListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherListCell.swift; sourceTree = "<group>"; };
 		D64D953525B4C0D700ABCD4D /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = SOURCE_ROOT; };
@@ -41,7 +48,10 @@
 		D64EBAFF25B348E2001DF553 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		D64EBB0125B348E2001DF553 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D64EBB0925B367B7001DF553 /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
+		D66D253025C1EC41001FAC13 /* DetailsCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsCollectionViewCell.swift; sourceTree = "<group>"; };
+		D66D253925C1FA4E001FAC13 /* DetailTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailTableViewCell.swift; sourceTree = "<group>"; };
 		D6A49D0225B6186C00CE6E4D /* WeatherListCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherListCellViewModel.swift; sourceTree = "<group>"; };
+		D6B7F69625BC7A7F000504D3 /* WeatherListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherListViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -70,14 +80,52 @@
 				AF80644A2AE41C738861263C /* Pods-YandexWeatherBasedApp.debug.xcconfig */,
 				6EB21C53D90A14E3DFB95282 /* Pods-YandexWeatherBasedApp.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
+			sourceTree = "<group>";
+		};
+		D6352EF725BF294600CE0674 /* Details */ = {
+			isa = PBXGroup;
+			children = (
+				D6352EEE25BDE3DC00CE0674 /* DetailsViewController.swift */,
+				D6352EF925BF2A0C00CE0674 /* DetailsViewModel.swift */,
+				D66D253025C1EC41001FAC13 /* DetailsCollectionViewCell.swift */,
+				D66D253925C1FA4E001FAC13 /* DetailTableViewCell.swift */,
+			);
+			path = Details;
+			sourceTree = "<group>";
+		};
+		D6352EFC25BF2B9300CE0674 /* Storyboards */ = {
+			isa = PBXGroup;
+			children = (
+				D64EBAF925B348DB001DF553 /* Main.storyboard */,
+				D64EBAFE25B348E2001DF553 /* LaunchScreen.storyboard */,
+			);
+			path = Storyboards;
+			sourceTree = "<group>";
+		};
+		D6352EFD25BF2BAF00CE0674 /* AppControllFiles */ = {
+			isa = PBXGroup;
+			children = (
+				D64EBAF525B348DB001DF553 /* SceneDelegate.swift */,
+				D64EBAF325B348DB001DF553 /* AppDelegate.swift */,
+			);
+			path = AppControllFiles;
+			sourceTree = "<group>";
+		};
+		D6352EFF25BF2BDC00CE0674 /* Support */ = {
+			isa = PBXGroup;
+			children = (
+				D64EBB0125B348E2001DF553 /* Info.plist */,
+				D64EBAFC25B348E2001DF553 /* Assets.xcassets */,
+			);
+			path = Support;
 			sourceTree = "<group>";
 		};
 		D64D952025B49A4100ABCD4D /* WeatherList */ = {
 			isa = PBXGroup;
 			children = (
 				D64EBAF725B348DB001DF553 /* WeatherListViewController.swift */,
+				D6B7F69625BC7A7F000504D3 /* WeatherListViewModel.swift */,
 				D64D952825B49BF700ABCD4D /* WeatherListCell */,
 			);
 			path = WeatherList;
@@ -133,14 +181,12 @@
 			isa = PBXGroup;
 			children = (
 				D64D952025B49A4100ABCD4D /* WeatherList */,
-				D64D953225B4C03D00ABCD4D /* Models */,
+				D6352EF725BF294600CE0674 /* Details */,
 				D64D953325B4C05200ABCD4D /* Managers */,
-				D64EBAF925B348DB001DF553 /* Main.storyboard */,
-				D64EBAF525B348DB001DF553 /* SceneDelegate.swift */,
-				D64EBAFC25B348E2001DF553 /* Assets.xcassets */,
-				D64EBAF325B348DB001DF553 /* AppDelegate.swift */,
-				D64EBAFE25B348E2001DF553 /* LaunchScreen.storyboard */,
-				D64EBB0125B348E2001DF553 /* Info.plist */,
+				D64D953225B4C03D00ABCD4D /* Models */,
+				D6352EFC25BF2B9300CE0674 /* Storyboards */,
+				D6352EFD25BF2BAF00CE0674 /* AppControllFiles */,
+				D6352EFF25BF2BDC00CE0674 /* Support */,
 			);
 			path = YandexWeatherBasedApp;
 			sourceTree = "<group>";
@@ -263,12 +309,17 @@
 				D64EBB0A25B367B7001DF553 /* LocationManager.swift in Sources */,
 				D64EBAF825B348DB001DF553 /* WeatherListViewController.swift in Sources */,
 				D64D951625B468C100ABCD4D /* YandexWeatherData.swift in Sources */,
+				D6352EFA25BF2A0C00CE0674 /* DetailsViewModel.swift in Sources */,
+				D66D253225C1EC42001FAC13 /* DetailsCollectionViewCell.swift in Sources */,
 				D64D953625B4C0D700ABCD4D /* NetworkManager.swift in Sources */,
 				D64EBAF425B348DB001DF553 /* AppDelegate.swift in Sources */,
+				D66D253A25C1FA4E001FAC13 /* DetailTableViewCell.swift in Sources */,
+				D6B7F69725BC7A7F000504D3 /* WeatherListViewModel.swift in Sources */,
 				D64EBAF625B348DB001DF553 /* SceneDelegate.swift in Sources */,
 				D64D953C25B4C97F00ABCD4D /* Cordinates2DString.swift in Sources */,
 				D64D951A25B4979D00ABCD4D /* WeatherListCell.swift in Sources */,
 				D6A49D0325B6186C00CE6E4D /* WeatherListCellViewModel.swift in Sources */,
+				D6352EEF25BDE3DC00CE0674 /* DetailsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -418,7 +469,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = TY8AJ3X7FD;
-				INFOPLIST_FILE = YandexWeatherBasedApp/Info.plist;
+				"INFOPLIST_FILE[sdk=*]" = "$(SRCROOT)/YandexWeatherBasedApp/Support/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -439,7 +490,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = TY8AJ3X7FD;
-				INFOPLIST_FILE = YandexWeatherBasedApp/Info.plist;
+				"INFOPLIST_FILE[sdk=*]" = "$(SRCROOT)/YandexWeatherBasedApp/Support/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

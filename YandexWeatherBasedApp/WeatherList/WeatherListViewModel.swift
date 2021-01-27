@@ -6,7 +6,8 @@
 //
 
 import Foundation
-import SVGKit
+
+//MARK:- Protocol
 
 protocol WeatherListViewModelProtocol: class {
     
@@ -17,6 +18,8 @@ protocol WeatherListViewModelProtocol: class {
     func fetchWeatherData(clousure: @escaping ()->Void)
     func cellViewModel(at indexPath: IndexPath) -> WeatherListCellViewModelProtocol?
 }
+
+//MARK:- Class
 
 class WeatherListViewModel: WeatherListViewModelProtocol {
     

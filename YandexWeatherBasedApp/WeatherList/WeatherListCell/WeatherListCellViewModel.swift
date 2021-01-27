@@ -8,6 +8,8 @@
 import Foundation
 import SVGKit
 
+//MARK:- Protocol
+
 protocol WeatherListCellViewModelProtocol {
     
     var cityName: String {get}
@@ -16,6 +18,8 @@ protocol WeatherListCellViewModelProtocol {
     
     init(weatherInfo: YandexWeatherData?)
 }
+
+//MARK:- Class
 
 class WeatherListCellViewModel: WeatherListCellViewModelProtocol {
 

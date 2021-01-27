@@ -11,18 +11,16 @@ import SVGKit
 class WeatherListCell: UITableViewCell {
     
     @IBOutlet private var cityNameLabel: UILabel!
-    @IBOutlet private var weatherIcon: UIImageView!
+    @IBOutlet private var conditionImage: UIImageView!
     @IBOutlet private var temperatureLabel: UILabel!
-    
+        
     var viewModel: WeatherListCellViewModelProtocol! {
         didSet {
 
             cityNameLabel.text = viewModel.cityName
             temperatureLabel.text = viewModel.temp
-            
-            
-            addSVGImage(iconWidth: weatherIcon.bounds.width,
-                        iconHeight: weatherIcon.bounds.height,
+            addSVGImage(iconWidth: conditionImage.bounds.width,
+                        iconHeight: conditionImage.bounds.height,
                         weatherIconSVG: viewModel.weatherIcon)
                        
         }
@@ -33,7 +31,7 @@ class WeatherListCell: UITableViewCell {
         if let svgImage = weatherIconSVG {
             svgImage.size = CGSize(width: width, height: height)
             let svgImageView = SVGKFastImageView(svgkImage: svgImage)
-            weatherIcon.addSubview(svgImageView!)
+            conditionImage.addSubview(svgImageView!)
         }
     }
 }

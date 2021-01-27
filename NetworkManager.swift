@@ -6,21 +6,23 @@
 //
 
 import Foundation
+import SVGKit
 
 class NetworkManager {
     
     static let shared = NetworkManager()
-    private let urlString = "https://api.weather.yandex.ru/v2/forecast?"
-    private let imageUrlString = "https://yastatic.net/weather/i/icons/blueye/color/svg/"
     
+    private let urlString = "https://api.weather.yandex.ru/v2/forecast?"
     private let apiKey = "32615584-6274-4047-9fc4-18c66b1d5040"
     private let apiField = "X-Yandex-API-Key"
     private let latitudeField = "&lat="
     private let longitudeField = "&lon="
     
+    private let imageUrlString = "https://yastatic.net/weather/i/icons/blueye/color/svg/"
+    
     private let locationManager = LocationManager()
     
-    func fetchData(forCity city: String, complitionHandeler: @escaping(YandexWeatherData)->Void)  {
+    func fetchData(forCity city: String, complitionHandeler: @escaping(YandexWeatherData?)->Void)  {
         
         var urlString = self.urlString
         
@@ -40,9 +42,8 @@ class NetworkManager {
                 
                 if let data = data {
                     guard let weatherData = self.parseJSON(withData: data) else {return}
-                    DispatchQueue.main.async {
-                    complitionHandeler(weatherData)
-                    }
+                   
+                        complitionHandeler(weatherData)
                 }
             }
             dataTask.resume()
@@ -63,13 +64,36 @@ class NetworkManager {
         return nil
     }
     
-    func loadImageData(imageName: String) -> Data? {
+    func fetchWeatherForCities (complitionHandeler: @escaping([YandexWeatherData?])->Void) {
+        
+        var dataArray: [YandexWeatherData?] = []
+        
+        let group = DispatchGroup()
+            
+        for city in cities {
+            group.enter()
+            DispatchQueue.global().async {
+                
+                self.fetchData(forCity: city) { (data) in
+                    dataArray.append(data)
+                    group.leave()
+                }
+            }
+        }
+        group.notify(queue: .main) {
+            complitionHandeler(dataArray)
+        }
+    }
+}
+
+//MARK:- SVG Loader
+extension NetworkManager {
+    
+    func loadSVGImage(imageName: String) -> SVGKImage? {
         
         let urlString = self.imageUrlString + imageName + ".svg"
-        
-        guard let url = URL(string: urlString) else {return nil}
-        if let data = try? Data(contentsOf: url) {
-            return data
+        if let url = URL(string: urlString), let conditionImage: SVGKImage = SVGKImage(contentsOf: url) {  
+            return conditionImage
         }
         return nil
     }
