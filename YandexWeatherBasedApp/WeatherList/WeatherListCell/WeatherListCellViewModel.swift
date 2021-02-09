@@ -6,7 +6,6 @@
 //
 
 import Foundation
-import SVGKit
 
 //MARK:- Protocol
 
@@ -14,7 +13,7 @@ protocol WeatherListCellViewModelProtocol {
     
     var cityName: String {get}
     var temp: String {get}
-    var weatherIcon: SVGKImage? {get}
+    var weatherIconData: Data? {get}
     
     init(weatherInfo: YandexWeatherData?)
 }
@@ -25,13 +24,16 @@ class WeatherListCellViewModel: WeatherListCellViewModelProtocol {
 
     var cityName: String
     var temp: String
-    var weatherIcon: SVGKImage?
+    var weatherIconData: Data?
+    
     
     required init(weatherInfo: YandexWeatherData?) {
         
-        self.cityName = weatherInfo?.geoObject.locality.name ?? "Неопознанный город"
-        self.temp = String(weatherInfo?.fact.temp ?? 00) + "˚C"
-        self.weatherIcon = NetworkManager.shared.loadSVGImage(imageName: "\(weatherInfo?.fact.icon ?? "ovc")")
+        self.cityName = weatherInfo?.geoObject.locality.name ?? "--"
+        if let temp = weatherInfo?.fact.temp {
+            self.temp = temp > 0 ? "+\(temp)˚C" : "\(temp)˚C"
+        } else {self.temp = "0˚C"}
+        self.weatherIconData = NetworkManager.shared.loadImageData(imageName: weatherInfo?.fact.icon)
     }
 }
 

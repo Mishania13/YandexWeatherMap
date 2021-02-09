@@ -13,5 +13,10 @@ class DetailsCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var temperatureLabel: UILabel!
     
     @IBOutlet weak var weatherImageView: UIImageView!
-
+    
+    func loadVieww() {
+        hourLabel.text = "11"
+        weatherImageView.image = UIImage(systemName: "cloud")
+        temperatureLabel.text = "22"
+    }
 }

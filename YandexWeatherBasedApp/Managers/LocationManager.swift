@@ -9,17 +9,23 @@ import CoreLocation
 
 struct LocationManager {
     
-    func getCoordinate(forCity cityName: String, comlitionHandler: @escaping(Cordinates2DString)->()) {
+    func getCoordinate(forCity cityName: String, comlitionHandler: @escaping(Cordinates2DString?)->()) {
         let geocoder = CLGeocoder()
         geocoder.geocodeAddressString(cityName) { (placemarks, error) in
-            guard let placemarks = placemarks,  let location = placemarks.first?.location?.coordinate else {
-                return
+            if error == nil {
+                
+                guard let placemarks = placemarks,  let location = placemarks.first?.location?.coordinate else {
+                    comlitionHandler(nil)
+                    return
+                }
+                let locationCoordinate = Cordinates2DString(latitude: location.latitude.description,
+                                                            longitude: location.longitude.description)
+                comlitionHandler(locationCoordinate)
+            } else {
+                print(error?.localizedDescription ?? "")
+                print(error!)
+                comlitionHandler(nil)
             }
-            let locationCoordinate = Cordinates2DString(latitude: location.latitude.description,
-                                                    longitude: location.longitude.description)
-            comlitionHandler(locationCoordinate)
         }
     }
-    
-    
 }

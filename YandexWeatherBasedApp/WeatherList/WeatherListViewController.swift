@@ -10,25 +10,27 @@ import SVGKit
 
 class WeatherListViewController: UIViewController {
         
-    @IBOutlet private var tableView: UITableView!
-    @IBOutlet private var searchBar: UISearchBar!
+    @IBOutlet  var tableView: UITableView!
+    @IBOutlet private var textField: UITextField!
+    @IBOutlet private var addCityButton: UIButton!
     
     private let segueID = "goToDetails"
     
-    private var viewModel: WeatherListViewModelProtocol! {
+    var viewModel: WeatherListViewModelProtocol! {
         
         didSet {
-            viewModel.fetchWeatherData(clousure: { [self] in
-
+            viewModel.fetchWeatherData(clousure: { 
+                
                 self.activiIndicator.isHidden = true
                 self.tableView.isHidden = false
+                self.addCityButton.isHidden = false
                 self.activiIndicator.stopAnimating()
             })
         }
     }
     
     private let refreshControl = UIRefreshControl()
-    var activiIndicator = UIActivityIndicatorView()
+    private var activiIndicator = UIActivityIndicatorView()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -37,16 +39,22 @@ class WeatherListViewController: UIViewController {
         viewLoading()
     }
     
+    @IBAction private func addCityButtonPressed() {
+        addCity()
+    }
+    
     private func viewLoading() {
         
-        self.refreshControl.addTarget(self, action: #selector(handleRefreshControl(sender:)), for: .valueChanged)
+        refreshControl.addTarget(self, action: #selector(handleRefreshControl(sender:)), for: .valueChanged)
         refreshControl.attributedTitle = NSAttributedString(string: "Loading")
-        self.tableView.refreshControl = refreshControl
-        self.tableView.isHidden = true
-        self.view.addSubview(activiIndicator)
+        tableView.refreshControl = refreshControl
+        tableView.isHidden = true
+        addCityButton.isHidden = true
+        view.addSubview(activiIndicator)
         activiIndicator.center = self.view.center
         activiIndicator.startAnimating()
         tableView.rowHeight = 50
+        textField.placeholder = ""
         viewModel = WeatherListViewModel(reloadData: self.tableView.reloadData)
     }
     
@@ -66,7 +74,7 @@ extension WeatherListViewController {
         if segue.identifier == segueID,
             let detailVC = segue.destination as? DetailsViewController,
             let currentWeather = sender as? YandexWeatherData {
-            detailVC.viewModel = DetailsViewModel(cityWeatherData: currentWeather)
+            detailVC.weatherData = currentWeather
             }
         }
 }
@@ -93,11 +101,24 @@ extension WeatherListViewController: UITableViewDelegate {
         tableView.deselectRow(at: indexPath, animated: true)
         self.performSegue(withIdentifier: segueID, sender: viewModel.weatherData![indexPath.row])
     }
+    
+    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        true
+    }
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            self.deleteCity(indexPath: indexPath) { (needToDelete) in
+                if needToDelete {
+                    tableView.deleteRows(at: [indexPath], with: .fade)
+                }
+            }
+            print("DELETE")
+        }
+    }
 }
-
-
-
-
-
-
-
+extension WeatherListViewController: UISearchBarDelegate, UISearchControllerDelegate, UISearchResultsUpdating  {
+    func updateSearchResults(for searchController: UISearchController) {
+        
+    }
+    
+}

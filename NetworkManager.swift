@@ -6,7 +6,6 @@
 //
 
 import Foundation
-import SVGKit
 
 class NetworkManager {
     
@@ -22,33 +21,52 @@ class NetworkManager {
     
     private let locationManager = LocationManager()
     
-    func fetchData(forCity city: String, complitionHandeler: @escaping(YandexWeatherData?)->Void)  {
-        
-        var urlString = self.urlString
-        
-        locationManager.getCoordinate(forCity: city) { (coordinate) in
-            urlString += self.latitudeField + coordinate.latitude
-            urlString += self.longitudeField + coordinate.longitude
-            
-            guard let url = URL(string: urlString) else {return}
-            var request = URLRequest(url: url)
-            request.addValue(self.apiKey, forHTTPHeaderField: self.apiField)
-            
-            
-            let dataTask = URLSession.shared.dataTask(with: request) { (data, response, error) in
-                if let error = error {
-                    print(error)
+    func fetchWeatherForCities (for cities: [String], completionHandler: @escaping ([YandexWeatherData]) -> Void) {
+       
+        var dataArray: [YandexWeatherData] = []
+        let group = DispatchGroup()
+
+        for city in cities {
+            group.enter()
+
+            var urlString = self.urlString
+
+            self.locationManager.getCoordinate(forCity: city) { (coordinate) in
+                guard let coordinate = coordinate  else {
+                    group.leave()
+                    return
                 }
-                
-                if let data = data {
-                    guard let weatherData = self.parseJSON(withData: data) else {return}
-                   
-                        complitionHandeler(weatherData)
+                urlString += self.latitudeField + coordinate.latitude
+                urlString += self.longitudeField + coordinate.longitude
+
+                guard let url = URL(string: urlString) else {
+                    group.leave()
+                    return
                 }
+
+                var request = URLRequest(url: url)
+                request.addValue(self.apiKey, forHTTPHeaderField: self.apiField)
+
+                let dataTask = URLSession.shared.dataTask(with: request) { data, response, error in
+                    guard
+                        let data = data,
+                        error == nil,
+                        let weatherData = self.parseJSON(withData: data)
+                    else {
+                        group.leave()
+                        print(error ?? "unknown error")
+                        return
+                    }
+                    dataArray.append(weatherData)
+
+                    group.leave()
+                }
+                dataTask.resume()
             }
-            dataTask.resume()
         }
-        
+        group.notify(queue: .main) {
+            completionHandler(dataArray)
+        }
     }
     
     private func parseJSON(withData data: Data) -> YandexWeatherData? {
@@ -63,37 +81,18 @@ class NetworkManager {
         }
         return nil
     }
-    
-    func fetchWeatherForCities (complitionHandeler: @escaping([YandexWeatherData?])->Void) {
-        
-        var dataArray: [YandexWeatherData?] = []
-        
-        let group = DispatchGroup()
-            
-        for city in cities {
-            group.enter()
-            DispatchQueue.global().async {
-                
-                self.fetchData(forCity: city) { (data) in
-                    dataArray.append(data)
-                    group.leave()
-                }
-            }
-        }
-        group.notify(queue: .main) {
-            complitionHandeler(dataArray)
-        }
-    }
+
 }
 
 //MARK:- SVG Loader
 extension NetworkManager {
     
-    func loadSVGImage(imageName: String) -> SVGKImage? {
+    func loadImageData(imageName: String?) -> Data? {
         
-        let urlString = self.imageUrlString + imageName + ".svg"
-        if let url = URL(string: urlString), let conditionImage: SVGKImage = SVGKImage(contentsOf: url) {  
-            return conditionImage
+        
+        let urlString = self.imageUrlString + (imageName ?? "ovc") + ".svg"
+        if let url = URL(string: urlString), let data = try? Data(contentsOf: url) {
+            return data
         }
         return nil
     }

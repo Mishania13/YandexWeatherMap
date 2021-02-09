@@ -10,12 +10,12 @@ struct YandexWeatherData: Codable {
 
     let geoObject: GeoObject
     let fact: Fact
-//    let forecasts: [Forecast]
+    let forecasts: [Forecast]
 
     enum CodingKeys: String, CodingKey {
         case geoObject = "geo_object"
         case fact
-//        case forecasts
+        case forecasts
     }
 }
 
@@ -52,6 +52,7 @@ struct Fact: Codable {
 struct Forecast: Codable {
 
     let date: String?
+    let parts: Parts
     let hours: [Hour]
 }
 
@@ -61,6 +62,16 @@ struct Hour: Codable {
     let hour: String?
     let temp: Int?
     let icon: String?
+}
+
+struct Parts: Codable {
+    let nightShort: Fact
+    let dayShort: Fact
+    
+    enum CodingKeys: String, CodingKey  {
+        case nightShort = "night_short"
+        case dayShort = "day_short"
+    }
 }
 
 // MARK: - GeoObject
