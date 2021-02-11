@@ -17,6 +17,8 @@ class WeatherListViewController: UIViewController {
     private let textFieldPlacholderText = "Введите название города"
     private let segueID = "goToDetails"
     
+    var clearButton: UIButton!
+    
     var viewModel: WeatherListViewModelProtocol! {
         
         didSet {
@@ -41,7 +43,7 @@ class WeatherListViewController: UIViewController {
     }
     
     @IBAction private func addCityButtonPressed() {
-        addCity()
+        viewModel.numberOfRows <= 10 ? addCity() : cityLimitExceeded()
     }
     
     @IBAction func textFieldEndEdditing() {
@@ -98,8 +100,9 @@ class WeatherListViewController: UIViewController {
         textField.leftViewMode = UITextField.ViewMode.unlessEditing
         textField.setLeftImageView(image: UIImage(), color: UIColor(), padding: 40)
         textField.clearButtonMode = .whileEditing
+        
         //Скрытие клавиатуры
-        let tap = UITapGestureRecognizer(target: view, action: #selector(UIView.endEditing))
+        let tap = UITapGestureRecognizer(target: view, action: #selector(textField.endEditing))
         tap.cancelsTouchesInView = false
         view.addGestureRecognizer(tap)
         
@@ -166,7 +169,6 @@ extension WeatherListViewController: UITableViewDelegate {
                     tableView.deleteRows(at: [indexPath], with: .fade)
                 }
             }
-            print("DELETE")
         }
     }
 }
@@ -174,8 +176,10 @@ extension WeatherListViewController: UITableViewDelegate {
 //MARK: - TextField
 
 extension WeatherListViewController: UITextFieldDelegate  {
+    
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         self.textFieldEndEdditing()
+        textField.resignFirstResponder()
         return true
     }
 }

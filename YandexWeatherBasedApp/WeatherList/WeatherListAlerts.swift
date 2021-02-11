@@ -11,7 +11,7 @@ extension WeatherListViewController {
   
     func addCity() {
         
-        //Блокируем действия пользователя на время ввода данных
+        //Блокируем действия пользователя на время проверки и загрузки данных
         
         let blockingScreenView = UIView(frame: self.view.frame)
         let activityIndicator = UIActivityIndicatorView()
@@ -33,7 +33,6 @@ extension WeatherListViewController {
         let search = UIAlertAction(title: "Поиск", style: .default) { action in
             
             let textField = alert.textFields?.first
-            
             activityIndicator.center = blockingScreenView.center
             blockingScreenView.addSubview(activityIndicator)
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
@@ -80,6 +79,17 @@ extension WeatherListViewController {
         
         let alertTitle = "Неверное название"
         let alertMessage = "Название населенного пункта введенно неверно. Пожалуйста, попробуйте ещё раз"
+        
+        let alert = UIAlertController(title: alertTitle, message: alertMessage, preferredStyle: .alert)
+        let cancel = UIAlertAction(title: "OK", style: .default)
+        alert.addAction(cancel)
+        present(alert, animated: true)
+    }
+    
+    func cityLimitExceeded() {
+        
+        let alertTitle = "Превышенно допустимое колличество городов"
+        let alertMessage = "В списке не может быть больше десяти городов. Для добавление нового города удалите один из уже имеющихся"
         
         let alert = UIAlertController(title: alertTitle, message: alertMessage, preferredStyle: .alert)
         let cancel = UIAlertAction(title: "OK", style: .default)
