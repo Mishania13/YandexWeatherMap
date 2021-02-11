@@ -26,7 +26,6 @@ extension WeatherListViewController {
         let alertMessage = "Введите название города"
         
         let alert = UIAlertController(title: alertTitle, message: alertMessage, preferredStyle: .alert)
-        let locationManager = LocationManager()
         alert.addTextField { (textfield) in
             textfield.placeholder = "Город"
         }
@@ -43,16 +42,15 @@ extension WeatherListViewController {
             activityIndicator.hidesWhenStopped = true
             
             guard let cityName = textField?.text else {return}
-            locationManager.getCoordinate(forCity: cityName) { (coordinates) in
-                if let _ = coordinates {
-                    
-                    self.viewModel.addCity(city: cityName, activityIndicatorStop: {
-                        UIView.animate(withDuration: 0.3) {blockingScreenView.layer.opacity = 0
-                        } completion: { (bool) in
-                            blockingScreenView.isHidden = true
-                        }
-                        activityIndicator.stopAnimating()
-                    })
+            
+            
+            self.viewModel.addCity(city: cityName) {isItCorrectCityName in
+                if isItCorrectCityName {
+                    UIView.animate(withDuration: 0.3) {blockingScreenView.layer.opacity = 0
+                    } completion: { (bool) in
+                        blockingScreenView.isHidden = true
+                    }
+                    activityIndicator.stopAnimating()
                 } else {
                     self.wrongCity()
                     UIView.animate(withDuration: 0.6) {blockingScreenView.layer.opacity = 0
@@ -63,6 +61,7 @@ extension WeatherListViewController {
                 }
             }
         }
+        
         let cancel = UIAlertAction(title: "Cancle", style: .destructive) {action in
             UIView.animate(withDuration: 0.6) {blockingScreenView.layer.opacity = 0
             } completion: { (bool) in

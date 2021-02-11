@@ -21,7 +21,7 @@ class NetworkManager {
     
     private let locationManager = LocationManager()
     
-    func fetchWeatherForCities (for cities: [String], completionHandler: @escaping ([YandexWeatherData]) -> Void) {
+    func fetchWeatherForCities (for cities: [String], weatherData: @escaping ([YandexWeatherData]) -> Void) {
        
         var dataArray: [YandexWeatherData] = []
         let group = DispatchGroup()
@@ -65,7 +65,7 @@ class NetworkManager {
             }
         }
         group.notify(queue: .main) {
-            completionHandler(dataArray)
+            weatherData(dataArray)
         }
     }
     

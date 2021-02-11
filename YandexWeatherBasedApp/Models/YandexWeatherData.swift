@@ -76,12 +76,12 @@ struct Parts: Codable {
 
 // MARK: - GeoObject
 struct GeoObject: Codable {
-    let district, locality: Country
+    let locality: Country
 }
 
 // MARK: - Country
 struct Country: Codable {
-
-    let name: String?
+    //делаем не опциональным т.к. если поле пустое, то и данные по этому объекту нам не нужны
+    let name: String
 }
 

@@ -22,8 +22,6 @@ struct LocationManager {
                                                             longitude: location.longitude.description)
                 comlitionHandler(locationCoordinate)
             } else {
-                print(error?.localizedDescription ?? "")
-                print(error!)
                 comlitionHandler(nil)
             }
         }
