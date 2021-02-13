@@ -13,7 +13,7 @@ class WeatherListViewController: UIViewController {
     @IBOutlet var tableView: UITableView!
     @IBOutlet private var textField: UITextField!
     @IBOutlet private var addCityButton: UIButton!
-    
+        
     private let textFieldPlacholderText = "Введите название города"
     private let segueID = "goToDetails"
     
@@ -46,7 +46,7 @@ class WeatherListViewController: UIViewController {
         viewModel.numberOfRows <= 10 ? addCity() : cityLimitExceeded()
     }
     
-    @IBAction func textFieldEndEdditing() {
+    func textFieldEndEdditing() {
         
         viewModel.showCityWeather(for: self.textField.text) { (data) in
             DispatchQueue.main.async {
@@ -58,6 +58,7 @@ class WeatherListViewController: UIViewController {
             }
             self.textField.text = nil
         }
+        view.endEditing(true)
     }
     
     private func viewLoading() {
@@ -101,24 +102,24 @@ class WeatherListViewController: UIViewController {
         textField.setLeftImageView(image: UIImage(), color: UIColor(), padding: 40)
         textField.clearButtonMode = .whileEditing
         
-        //Скрытие клавиатуры
-        let tap = UITapGestureRecognizer(target: view, action: #selector(textField.endEditing))
-        tap.cancelsTouchesInView = false
-        view.addGestureRecognizer(tap)
-        
         textField.autocorrectionType = .no
         textField.delegate = self
+        
+        let tapRecognizer = UITapGestureRecognizer(target: self, action: #selector(tapGestureRecognizer))
+        tapRecognizer.cancelsTouchesInView = false
+        view.addGestureRecognizer(tapRecognizer)
     }
     
-    @objc func handleRefreshControl(sender: UIRefreshControl) {
+    @objc private func handleRefreshControl(sender: UIRefreshControl) {
         viewModel = WeatherListViewModel(reloadData: self.tableView.reloadData)
         DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
             self.tableView.refreshControl?.endRefreshing()
         }
     }
-    
-    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        view.endEditing(true)
+    @objc private func tapGestureRecognizer(sender: UITapGestureRecognizer) {
+        if textField.isFirstResponder {
+            view.endEditing(true)
+        }
     }
 }
 //MARK: - Navigation
@@ -179,7 +180,6 @@ extension WeatherListViewController: UITextFieldDelegate  {
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         self.textFieldEndEdditing()
-        textField.resignFirstResponder()
         return true
     }
 }
